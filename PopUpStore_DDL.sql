@@ -144,3 +144,25 @@ CREATE TABLE CUSTOMER_VISIT(
     CONSTRAINT CUSTOMER_VISIT_FK3 FOREIGN KEY (ShopID) REFERENCES POPUP_STORE(ShopID)
 );
 
+-------Computed Columns Based on a Function--------
+GO
+CREATE FUNCTION Function_EmployeeYearlyIncome(@Salary DECIMAL(10,2))
+RETURNS INT
+AS
+BEGIN 
+   RETURN 12* @Salary
+END 
+GO
+
+drop FUNCTION Function_EmployeeYearlyIncome;
+
+ALTER TABLE EMPLOYEE 
+ADD EmployeeYearlyIncome 
+AS dbo.Function_EmployeeYearlyIncome(EmployeeSalary);
+
+--------Non-Cluster Indexes-----------
+GO
+CREATE NONCLUSTERED INDEX IX_Product_ProductStandardPrice ON PRODUCT (ProductStandardPrice);
+GO	
+--用于快速查找ProductStandardPrice
+
