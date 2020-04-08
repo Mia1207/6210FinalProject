@@ -1,5 +1,5 @@
 -------Create Database------
-CREATE DATABASE FinalProject3;
+CREATE DATABASE FinalProject;
 USE FinalProject;
 
 ------Create Table--------
@@ -169,9 +169,7 @@ BEGIN
 END 
 GO
 
-drop FUNCTION Function_EmployeeYearlyIncome;
-
-ALTER TABLE EMPLOYEE 
+ALTER TABLE EMPLOYEE
 ADD EmployeeYearlyIncome 
 AS dbo.Function_EmployeeYearlyIncome(EmployeeSalary);
 
