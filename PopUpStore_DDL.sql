@@ -104,7 +104,7 @@ CREATE TABLE PRODUCT(
     ProductName NVARCHAR(50),
     ProductCategories VARCHAR(30) CONSTRAINT ProductCategories_CHK CHECK (ProductCategories IN ('Tops & T-Shirts',
                                                                 'Pants & Tights', 'Shorts', 'Hoodies & Pullovers',
-                                                                'Jackets & Vests','Other')),
+                                                                'Jackets & Vests','Shoes')),
     ProductDescription VARCHAR(50),
     ProductStandardPrice DECIMAL(10,2),
     WareHouseID INT,
