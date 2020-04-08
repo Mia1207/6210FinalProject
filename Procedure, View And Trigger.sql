@@ -212,3 +212,66 @@ END
 INSERT INTO INTERSTATE_WAREHOUSE (WarehouseID, WarehouseName, WarehouseAddress,WarehouseCity,WarehouseState,WarehousePostalCode,WarehouseCapacity,WarehousePhoneNumber) VALUES
 ('221','Boston Public Storage','73 Park Drive','Bdston','aA','02315','5030','1028352740');
 Select * FROM INTERSTATE_WAREHOUSE
+
+----Create a trigger to protect safty.
+GO
+CREATE TRIGGER [Safety]
+ON DATABASE
+FOR DROP_TABLE, ALTER_TABLE
+AS 
+    PRINT 'You must disable Trigger "Safety" to drop or alter tables!'
+    ROLLBACK;
+
+
+CREATE TABLE [dbo].CUSTOMER_SERVICE_AUDITS(
+    Change_ID INT IDENTITY PRIMARY KEY,
+    CenterID INT NOT NULL,
+    CenterName NVARCHAR(50),
+    CenterAddress VARCHAR(30),
+    CenterCity VARCHAR(20),
+    CenterState CHAR(2),
+    CenterPostalCode VARCHAR(9),
+    Action CHAR(1),
+    ActionDate DATETIME
+);
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TRIGGER GETCUSTOMER_SERVICE_AUDITS
+   ON  CUSTOMER_SERVICE
+  FOR UPDATE 
+AS 
+BEGIN
+DECLARE @Action char(1)
+SET @Action = 'U'
+INSERT INTO CUSTOMER_SERVICE_AUDITS ( 
+		CenterID,
+        CenterName,
+        CenterAddress,
+        CenterCity,
+        CenterState,
+        CenterPostalCode,
+        Action,
+        ActionDate 
+)
+SELECT 
+        CenterID,
+        CenterName,
+        CenterAddress,
+        CenterCity,
+        CenterState,
+        CenterPostalCode,
+		@Action,
+		GETDATE()
+    FROM DELETED
+END
+GO
+
+SELECT * FROM CUSTOMER_SERVICE;
+UPDATE CUSTOMER_SERVICE SET CenterName = 'TDGARDEN'
+WHERE CenterID = '100';
+
+SELECT * FROM [dbo].CUSTOMER_SERVICE;

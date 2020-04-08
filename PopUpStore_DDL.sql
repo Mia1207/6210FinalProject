@@ -17,8 +17,7 @@ CREATE TABLE CUSTOMER(
     CONSTRAINT CUSTOMER_PK PRIMARY KEY (CustomerID),
     CONSTRAINT Customer_FK FOREIGN KEY (CenterID) REFERENCES CUSTOMER_SERVICE(CenterID)
 );
---新增City，State和PhoneNumber
---新增CostomerLevel, 用于“Table-level CHECK Constraints”
+
 
 CREATE TABLE CUSTOMER_SERVICE(
     CenterID INT NOT NULL,
@@ -29,7 +28,6 @@ CREATE TABLE CUSTOMER_SERVICE(
     CenterPostalCode VARCHAR(9),
     CONSTRAINT CUSTOMER_SERVICE_PK PRIMARY KEY (CenterID)
 );
---新增city，state 
 
 CREATE TABLE EMPLOYEE(
     EmployeeID INT NOT NULL,
@@ -50,7 +48,6 @@ CREATE TABLE EMPLOYEE(
     CONSTRAINT EMPLOYEE_FK2 FOREIGN KEY (WarehouseID) REFERENCES INTERSTATE_WAREHOUSE(WarehouseID),
     CONSTRAINT EMPLOYEE_FK3 FOREIGN KEY (ShopID) REFERENCES POPUP_STORE(ShopID)
 );
---新增city，state
 
 CREATE TABLE INTERSTATE_WAREHOUSE(
     WarehouseID INT NOT NULL,
@@ -63,7 +60,6 @@ CREATE TABLE INTERSTATE_WAREHOUSE(
     WarehousePhoneNumber CHAR(10),
     CONSTRAINT INTERSTATE_WAREHOUSE_PK PRIMARY KEY (WarehouseID)
 );
---新增city， state，phonenumber
 
 CREATE TABLE POPUP_STORE(
     ShopID INT NOT NULL,
@@ -78,7 +74,6 @@ CREATE TABLE POPUP_STORE(
     CONSTRAINT POPUP_STORE_PK PRIMARY KEY (ShopID),
     CONSTRAINT POPUP_STORE_FK FOREIGN KEY (WarehouseID) REFERENCES INTERSTATE_WAREHOUSE(WarehouseID)
 );
---新增City，State,PostalCode和fax
 
 CREATE TABLE [ORDER](
     OrderID INT NOT NULL,
@@ -111,7 +106,6 @@ CREATE TABLE PRODUCT(
     CONSTRAINT PRODUCT_PK PRIMARY KEY (ProductID),
     CONSTRAINT PRODUCT_FK FOREIGN KEY (WarehouseID) REFERENCES INTERSTATE_WAREHOUSE(WarehouseID)
 );
---新增ProductCategories，用于“Table-level CHECK Constraints”
 
 CREATE TABLE SUPPLIER(
     SupplierID INT NOT NULL,
@@ -124,7 +118,6 @@ CREATE TABLE SUPPLIER(
     SupplierFax CHAR(10),
     CONSTRAINT SUPPLIER_PK PRIMARY KEY (SupplierID)
 );
---新增city，state
 
 CREATE TABLE ORDER_LINE(
     OrderID INT NOT NULL,
@@ -176,6 +169,34 @@ AS dbo.Function_EmployeeYearlyIncome(EmployeeSalary);
 --------Non-Cluster Indexes-----------
 GO
 CREATE NONCLUSTERED INDEX IX_Product_ProductStandardPrice ON PRODUCT (ProductStandardPrice);
-GO	
---用于快速查找ProductStandardPrice
 
+
+------Column Data Encryption-----
+CREATE MASTER KEY ENCRYPTION BY   
+PASSWORD = '<1Q2S3C4V5B>'; 
+
+CREATE CERTIFICATE Sales09  
+   WITH SUBJECT = 'Customer Invoice Number';  
+GO  
+
+CREATE SYMMETRIC KEY Invoice_Key11  
+    WITH ALGORITHM = AES_256  
+    ENCRYPTION BY CERTIFICATE Sales09;  
+GO  
+
+USE FinalProject6;
+ALTER TABLE PAYMENT   
+    ADD InvoiceNumber_Encrypted varbinary(128);   
+GO  
+
+
+OPEN SYMMETRIC KEY Invoice_Key11  
+   DECRYPTION BY CERTIFICATE Sales09;  
+   
+UPDATE PAYMENT
+SET InvoiceNumber = EncryptByKey(Key_GUID('Invoice_Key11') , InvoiceNumber);
+GO  
+
+OPEN SYMMETRIC KEY Invoice_Key11  
+   DECRYPTION BY CERTIFICATE Sales09;  
+GO

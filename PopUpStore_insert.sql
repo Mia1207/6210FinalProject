@@ -11,7 +11,14 @@ INSERT INTO CUSTOMER (CustomerID, CustomerName, CustomerLevel,CustomerAddress,Cu
 ('2007','Joey Jackman','Gold','Sunset St','Los Angles','CA','50278','5989291394',103),
 ('2008','Monica Galler','Diamond','Bacon St','Chicago','IL','66727','5872876732',102),
 ('2009','Hui Zhang','Platinum','87th Santa st','Miami','FL','08762','6892918378',104),
-('2010','Kendric Lamar','Bronze','Lasvegas St','Lasvegas','NV','56789','8765289139',105);
+('2010','Kendric Lamar','Bronze','Lasvegas St','Lasvegas','NV','56789','8765289139',105),
+('2011','Li Zhang','Bronze','Larned St','Detroit','MI','48226','7484394575',110)
+('2012','Chris Media','Bronze','Brush St','Chicago','IL','88227','3472432834',110)
+('2013','David Guetta','Bronze','W Jackson St','Los Angles','CA','55678','3442786633',105)
+('2014','DeMi Lovato','Gold','North 89th St','Salk Lake City','UT','36789','8493946734',107)
+('2015','James Blunt','Silver','Fenway St','Boston','MA','11298','7282949534',102)
+('2016','Liam Payne','Silver','Chicago St','Chicago','IL','23901','1284752375',106)
+('2017','Miley Cyrus','Bronze','Sunset St','Los Angles','CA','57829','4534524500',104);
 
 INSERT INTO CUSTOMER_SERVICE (CenterID, CenterName, CenterAddress,CenterCity,CenterState,CenterPostalCode) VALUES
 ('100','Bloomingdale','5th Ave','NewYork City','NY','10256'),
