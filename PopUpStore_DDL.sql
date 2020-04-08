@@ -1,5 +1,5 @@
 -------Create Database------
-CREATE DATABASE FinalProject;
+CREATE DATABASE FinalProject3;
 USE FinalProject;
 
 ------Create Table--------
@@ -141,6 +141,7 @@ CREATE TABLE SUPPLIER_LINE(
     ProductID INT NOT NULL,
     QuantityOfProduct SMALLINT,
     SupplyUnitPrice DECIMAL(6,2),
+    SupplyDate DATETIME DEFAULT(getdate()),
     CONSTRAINT SUPPLIER_LINE_PK PRIMARY KEY (SupplierID,ProductID),
     CONSTRAINT SUPPLIER_LINE_FK1 FOREIGN KEY (SuppLierID) REFERENCES SUPPLIER(SupplierID),
     CONSTRAINT SUPPLIER_LINE_FK2 FOREIGN KEY (ProductID) REFERENCES PRODUCT(ProductID)
