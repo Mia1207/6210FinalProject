@@ -26,17 +26,35 @@ INSERT INTO CUSTOMER_SERVICE (CenterID, CenterName, CenterAddress,CenterCity,Cen
 ('109','Northeastern','340 Huntig Ave','Columbia','OH','90813'),
 ('110','PriceChopper','Newyork St','Helena','MT','77813');
 
-INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax) VALUES
-('0001','Chris Brown','Other','3000','360 Huntington Ave','Boston','MA','02115','3820561639','3720416307'),
-('0002','Lebron James','Male','10000','361 Huntington Ave','Boston','MA','02115','5872677123','3720416307'),
-('0003','Jason Tatum','Male','3500','362 Huntington Ave','Boston','MA','02116','6897176827','3720416307'),
-('0004','Kyle Kuzma','Female','6500','363 Huntington Ave','Boston','MA','02116','8907186723','3720416307'),
-('0005','Dwight Howard','Male','8000','364 Huntington Ave','Boston','MA','02117','5627168787','3720416307'),
-('0006','Dwyane Wade','Female','10000','365 Huntington Ave','Boston','MA','02117','9876521712','3720416307'),
-('0007','Kevin Pope','Female','5000','366 Huntington Ave','Boston','MA','02118','8678018982','3720416307'),
-('0008','Danny Green','Male','5500','367 Huntington Ave','Boston','MA','02118','5678279184','3720416307'),
-('0009','Demar Cousins','Male','8000','368 Huntington Ave','Boston','MA','02119','6077809281','3720416307'),
-('0010','Jenny Bradely','Female','7000','369 Huntington Ave','Boston','MA','02119','9183072617','3720416307');
+INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,CenterID) VALUES
+('0001','Chris Brown','Other','3000','360 Huntington Ave','Boston','MA','02115','3820561639','3720416307','100')
+
+INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,CenterID) VALUES
+('0002','Lebron James','Male','10000','Rolla St','Saint Louis','MO','65271','5872677123','3720416307','103');
+
+INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,WarehouseID) VALUES
+('0003','Jason Tatum','Male','3500','Larned St','Detroit','MI','48226','6897176827','3720416307','210');
+
+INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,ShopID) VALUES
+('0004','Kyle Kuzma','Female','6500','Brush St','Chicago','IL','88227','8907186723','3720416307','303');
+
+INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,ShopID) VALUES
+('0005','Dwight Howard','Male','8000','W Jackson St','Los Angles','CA','55678','5627168787','3720416307','305');
+
+INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,ShopID) VALUES
+('0006','Dwyane Wade','Female','10000','North 89th St','Salk Lake City','UT','36789','9876521712','3720416307','307');
+
+INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,CenterID) VALUES
+('0007','Kevin Pope','Female','5000','Fenway St','Boston','MA','11298','8678018982','3720416307','105');
+
+INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,ShopID) VALUES
+('0008','Danny Green','Male','5500','Fifth Ave','Houston','TX','85776','5678279184','3720416307','303');
+
+INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,ShopID) VALUES
+('0009','Demar Cousins','Male','8000','68th St','Topeka','KS','39802','6077809281','3720416307','304');
+
+INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,ShopID) VALUES
+('0010','Jenny Bradely','Female','7000','340 Huntig Ave','Columbia','OH','90813','9183072617','3720416307','306');
 
 INSERT INTO INTERSTATE_WAREHOUSE (WarehouseID, WarehouseName, WarehouseAddress,WarehouseCity,WarehouseState,WarehousePostalCode,WarehouseCapacity,WarehousePhoneNumber) VALUES
 ('201','Boston Public Storage','70 Park Drive','Boston','MA','02215','5000','1028352740'),
