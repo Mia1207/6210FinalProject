@@ -1,3 +1,4 @@
+-- This procedure take Customer name as input to abtain the information about all the order ID and Description related to the customer 
 GO
 CREATE PROCEDURE GetOrderDetail 
 @CustomerName NVARCHAR(25)
@@ -11,6 +12,7 @@ END
 
 EXEC GetOrderDetail @CustomerName = 'Kanye West';
 
+-- This procedure take Employee ID and New Department ID as input to Update the Work of Employee from one department to another department
 GO
 CREATE PROCEDURE UpdateEmployeeWorks
 @EmployeeID INT,
@@ -60,6 +62,7 @@ DECLARE @result2 VARCHAR(30);
 EXEC UpdateEmployeeWorks @EmployeeID =0003, @NewDepartmentID = 103, @Message=@result2 Output;
 PRINT @result2;
 
+-- This procedure take ProductID and SupplierID as input to obtain the profit which will make after saleing all the items from this purchase.
 GO
 CREATE PROCEDURE GetTotalProfit
 @ProductID INT,
@@ -89,6 +92,7 @@ DECLARE @Money FLOAT
 EXEC GetTotalProfit @ProductID=63467, @SupplierID =1000, @Profit =@Money output;
 SELECT @Money AS Profit
 
+-- This procedrue take Cartory as input to obtain the numer of styles in one specific category
 GO
 CREATE PROCEDURE GetNumberWithinCatrgory
 @Category VARCHAR(30),
@@ -103,6 +107,7 @@ DECLARE @num INT
 EXEC GetNumberWithinCatrgory @Category = 'Hoodies & Pullovers',@Number=@num output;
 select @num AS 'Number ';
 
+-- Create a view to see the detail of customer who is Gold Customer
 GO
 CREATE VIEW vw_GoldCustomer AS
 SELECT CustomerID,CustomerName,CustomerAddress,CustomerCity,CustomerState,CustomerPostalCode,CustomerPhoneNumber
@@ -113,6 +118,20 @@ GO
 
 SELECT * FROM vw_GoldCustomer;
 
+-- Create a View to see the detail of customer who is Diamond Customer with the times of purchase
+GO
+CREATE VIEW vw_DiamondCustomerwithOrder AS
+SELECT Distinct Customer.CustomerID,CustomerName,CustomerAddress,CustomerCity,CustomerState,CustomerPostalCode,CustomerPhoneNumber,count(OrderID) as 'Times'
+FROM CUSTOMER,[CUSTOMER_VISIT]
+WHERE CustomerLevel ='Diamond'
+AND CUSTOMER.CustomerID = [CUSTOMER_VISIT].CustomerID
+Group BY Customer.CustomerID,CustomerName,CustomerAddress,CustomerCity,CustomerState,CustomerPostalCode,CustomerPhoneNumber
+WITH CHECK OPTION;
+GO
+
+SELECT * FROM vw_DiamondCustomerwithOrder;
+
+-- Create a view to see the detail of pending order
 GO
 CREATE VIEW vw_PendingOrder AS
 SELECT OrderID, OrderDescription,OrderDate
@@ -123,6 +142,7 @@ GO
 
 SELECT * FROM vw_PendingOrder
 
+-- Create a view to see the detail of the shoes products
 GO
 CREATE VIEW vw_ShoesProducts AS
 SELECT ProductID, ProductName,ProductDescription,ProductStandardPrice,WareHouseID
@@ -133,6 +153,7 @@ GO
 
 SELECT * FROM vw_ShoesProducts
 
+-- Create a trigger to avoid the conflct of shop name
 GO
 CREATE TRIGGER ConfictName
 ON POPUP_STORE
@@ -152,6 +173,7 @@ INSERT INTO POPUP_STORE (ShopID, ShopName, ShopAddress,ShopCity,ShopState,ShopPo
 ('322','K','1630 Tremont St','Beston','Mz','02123','3782719222','Kylie Janser');
 SELECT * FROM POPUP_STORE
 
+-- Create a trigger to avoid the conflct of customer service name
 GO
 CREATE TRIGGER ConfictNameInCenter
 ON CUSTOMER_SERVICE
@@ -171,6 +193,7 @@ INSERT INTO CUSTOMER_SERVICE (CenterID, CenterName, CenterAddress,CenterCity,Cen
 ('122','Bloomingdale','5td Ave','NewYdrk City','dY','10d56');
 SELECT * FROM CUSTOMER_SERVICE;
 
+-- Create a trigger to avoid the conflct of warehouse name
 GO
 CREATE TRIGGER ConfictNameInWarehouse
 ON INTERSTATE_WAREHOUSE
