@@ -1,17 +1,17 @@
-USE FinalProject;
+USE FinalProject6;
 
 -----Insert Data-----
-INSERT INTO CUSTOMER (CustomerID, CustomerName, CustomerLevel,CustomerAddress,CustomerCity,CustomerState,CustomerPostalCode,CustomerPhoneNumber) VALUES
-('2001','Kanye West','Silver','7 9th St','Boston','MA','02155','7278360281'),
-('2002','Kendall Jenner','Gold','70 Peterborough St','Boston','MA','02215','7290461029'),
-('2003','James Harden','Bronze','W 100 St','NewYork City','NY','10256','8578793938'),
-('2004','Steven Hill','Diamond','N 76th St','Saint Louis','MO','65411','5733097929'),
-('2005','Kevin Smith','Platinum','80 South St','Augusta','ME','33091','8782561265'),
-('2006','Chandler Bing','Silver','W 99 St','NewYork City','NY','10987','6678573927'),
-('2007','Joey Jackman','Gold','Sunset St','Los Angles','CA','50278','5989291394'),
-('2008','Monica Galler','Diamond','Bacon St','Chicago','IL','66727','5872876732'),
-('2009','Hui Zhang','Platinum','87th Santa st','Miami','FL','08762','6892918378'),
-('2010','Kendric Lamar','Bronze','Lasvegas St','Lasvegas','NV','56789','8765289139');
+INSERT INTO CUSTOMER (CustomerID, CustomerName, CustomerLevel,CustomerAddress,CustomerCity,CustomerState,CustomerPostalCode,CustomerPhoneNumber,CenterID) VALUES
+('2001','Kanye West','Silver','7 9th St','Boston','MA','02155','7278360281',101),
+('2002','Kendall Jenner','Gold','70 Peterborough St','Boston','MA','02215','7290461029',109),
+('2003','James Harden','Bronze','W 100 St','NewYork City','NY','10256','8578793938',102),
+('2004','Steven Hill','Diamond','N 76th St','Saint Louis','MO','65411','5733097929',108),
+('2005','Kevin Smith','Platinum','80 South St','Augusta','ME','33091','8782561265',107),
+('2006','Chandler Bing','Silver','W 99 St','NewYork City','NY','10987','6678573927',101),
+('2007','Joey Jackman','Gold','Sunset St','Los Angles','CA','50278','5989291394',103),
+('2008','Monica Galler','Diamond','Bacon St','Chicago','IL','66727','5872876732',102),
+('2009','Hui Zhang','Platinum','87th Santa st','Miami','FL','08762','6892918378',104),
+('2010','Kendric Lamar','Bronze','Lasvegas St','Lasvegas','NV','56789','8765289139',105);
 
 INSERT INTO CUSTOMER_SERVICE (CenterID, CenterName, CenterAddress,CenterCity,CenterState,CenterPostalCode) VALUES
 ('100','Bloomingdale','5th Ave','NewYork City','NY','10256'),
@@ -26,35 +26,19 @@ INSERT INTO CUSTOMER_SERVICE (CenterID, CenterName, CenterAddress,CenterCity,Cen
 ('109','Northeastern','340 Huntig Ave','Columbia','OH','90813'),
 ('110','PriceChopper','Newyork St','Helena','MT','77813');
 
-INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,CenterID) VALUES
-('0001','Chris Brown','Other','3000','360 Huntington Ave','Boston','MA','02115','3820561639','3720416307','100')
+INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax) VALUES
+('0001','Chris Brown','Other','3000','360 Huntington Ave','Boston','MA','02115','3820561639','3720416307'),
+('0002','Lebron James','Male','10000','Rolla St','Saint Louis','MO','65271','5872677123','3720416307'),
+('0003','Jason Tatum','Male','3500','Larned St','Detroit','MI','48226','6897176827','3720416307'),
+('0004','Kyle Kuzma','Female','6500','Brush St','Chicago','IL','88227','8907186723','3720416307'),
+('0005','Dwight Howard','Male','8000','W Jackson St','Los Angles','CA','55678','5627168787','3720416307'),
+('0006','Dwyane Wade','Female','10000','North 89th St','Salk Lake City','UT','36789','9876521712','3720416307'),
+('0007','Kevin Pope','Female','5000','Fenway St','Boston','MA','11298','8678018982','3720416307'),
+('0008','Danny Green','Male','5500','Fifth Ave','Houston','TX','85776','5678279184','3720416307'),
+('0009','Demar Cousins','Male','8000','68th St','Topeka','KS','39802','6077809281','3720416307'),
+('0010','Jenny Bradely','Female','7000','340 Huntig Ave','Columbia','OH','90813','9183072617','3720416307');
 
-INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,CenterID) VALUES
-('0002','Lebron James','Male','10000','Rolla St','Saint Louis','MO','65271','5872677123','3720416307','103');
-
-INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,WarehouseID) VALUES
-('0003','Jason Tatum','Male','3500','Larned St','Detroit','MI','48226','6897176827','3720416307','210');
-
-INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,ShopID) VALUES
-('0004','Kyle Kuzma','Female','6500','Brush St','Chicago','IL','88227','8907186723','3720416307','303');
-
-INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,ShopID) VALUES
-('0005','Dwight Howard','Male','8000','W Jackson St','Los Angles','CA','55678','5627168787','3720416307','305');
-
-INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,ShopID) VALUES
-('0006','Dwyane Wade','Female','10000','North 89th St','Salk Lake City','UT','36789','9876521712','3720416307','307');
-
-INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,CenterID) VALUES
-('0007','Kevin Pope','Female','5000','Fenway St','Boston','MA','11298','8678018982','3720416307','105');
-
-INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,ShopID) VALUES
-('0008','Danny Green','Male','5500','Fifth Ave','Houston','TX','85776','5678279184','3720416307','303');
-
-INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,ShopID) VALUES
-('0009','Demar Cousins','Male','8000','68th St','Topeka','KS','39802','6077809281','3720416307','304');
-
-INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, EmployeeGender,EmployeeSalary,EmployeeAddress,EmployeeCity,EmployeeState,EmployeePostalCode,EmployeePhoneNumber,EmployeeFax,ShopID) VALUES
-('0010','Jenny Bradely','Female','7000','340 Huntig Ave','Columbia','OH','90813','9183072617','3720416307','306');
+SELECT* FROM EMPLOYEE;
 
 INSERT INTO INTERSTATE_WAREHOUSE (WarehouseID, WarehouseName, WarehouseAddress,WarehouseCity,WarehouseState,WarehousePostalCode,WarehouseCapacity,WarehousePhoneNumber) VALUES
 ('201','Boston Public Storage','70 Park Drive','Boston','MA','02215','5000','1028352740'),
@@ -68,17 +52,17 @@ INSERT INTO INTERSTATE_WAREHOUSE (WarehouseID, WarehouseName, WarehouseAddress,W
 ('209','OhioWarehouse','108 Strike St','Columbus','OH','88019','15000','2938104812'),
 ('210','LakeStorage','Lake St','Salt Lake City','UT','29304','6000','3339182422');
 
-INSERT INTO POPUP_STORE (ShopID, ShopName, ShopAddress,ShopCity,ShopState,ShopPostalCode,ShopFax,ShopContact) VALUES
-('301','K','1620 Tremont St','Boston','MA','02120','3782719272','Kylie Janner'),
-('302','O','W 80th St','NewYork City','NY','10289','3672819302','Jerry Kim'),
-('303','B','Fairfax Ave','Los Angles','CA','89021','5829381291','Steven Yuan'),
-('304','E','Chicago St','Chicago','IL','87291','2938129031','Lian Liu'),
-('305','B','Miami St','Miami','FL','67821','5562818319','Tom Hardy'),
-('306','R','78th St','Houston','TX','25617','9082910312','James Westbrook'),
-('307','Y','E 35th St','Denver','CO','78291','8293712818','Allen Iverson'),
-('308','A','w 18th Ave','Charlotte','NC','29813','5678389282','Ken Walker'),
-('309','N','8 5th St','New Orleans','LA','56272','4556728193','Anthony Davis'),
-('310','T','Pitt St','Altanta','GA','66721','7782938113','Trae Young');
+INSERT INTO POPUP_STORE (ShopID, ShopName, ShopAddress,ShopCity,ShopState,ShopPostalCode,ShopFax,ShopContact,WarehouseID) VALUES
+('301','K','1620 Tremont St','Boston','MA','02120','3782719272','Kylie Janner','201'),
+('302','O','W 80th St','NewYork City','NY','10289','3672819302','Jerry Kim','202'),
+('303','B','Fairfax Ave','Los Angles','CA','89021','5829381291','Steven Yuan','205'),
+('304','E','Chicago St','Chicago','IL','87291','2938129031','Lian Liu','204'),
+('305','B','Miami St','Miami','FL','67821','5562818319','Tom Hardy','209'),
+('306','R','78th St','Houston','TX','25617','9082910312','James Westbrook','206'),
+('307','Y','E 35th St','Denver','CO','78291','8293712818','Allen Iverson','210'),
+('308','A','w 18th Ave','Charlotte','NC','29813','5678389282','Ken Walker','203'),
+('309','N','8 5th St','New Orleans','LA','56272','4556728193','Anthony Davis','207'),
+('310','T','Pitt St','Altanta','GA','66721','7782938113','Trae Young','208');
 
 INSERT INTO [ORDER] (OrderID, OrderDescription, OrderStatus,OrderDate) VALUES
 ('38294710','30% Off','Open','2019-12-31 10:22:34'),
@@ -104,17 +88,17 @@ INSERT INTO PAYMENT (InvoiceNumber, OrderID, PaymentDate,PaymentAmount,PaymentMe
 ('62829181','63738017','2020-03-31 14:27:42','24','Credit Card'),
 ('78201018','46729272','2020-04-07 22:22:43','15.99','Cash');
 
-INSERT INTO PRODUCT (ProductID, ProductName, ProductCategories,ProductDescription,ProductStandardPrice) VALUES
-('72927','Nike Kobe  Bryant Mamba DriFit','Tops & T-Shirts','Grey',63.99),
-('75534','Kobe Bryant 2008-2009 Classic Jersey','Tops & T-Shirts','Purple',30.00),
-('23456','Nike Men Basketball Short','Shorts','Black',55.00),
-('34566','Nike 2020 New Kobe Bryant Men Sweater','Hoodies & Pullovers','White/Purple',159.99),
-('85732','Nike Kobe Bryant Print Tracksuit','Pants & Tights','Grey',110.00),
-('14574','Nike Black Mamba Never Die','Jackets & Vests','White/Purple',120.00),
-('35225','Nike Black Mamba','Hoodies & Pullovers','Black',115.00),
-('63467','Nike Kobe 3 SL MVP','Shoes','White/Varsity Purple-Varsity Maize',90.00),
-('97853','Nike Kobe 2 ST USA','Shoes','Midnight Navy/White-Varsity Red',200.00),
-('27231','Nike Kobe 1 Protro 81 Pt Game','Shoes','White/Black-Varsity Purple',175.00);
+INSERT INTO PRODUCT (ProductID, ProductName, ProductCategories,ProductDescription,ProductStandardPrice,WareHouseID) VALUES
+('72927','Nike Kobe  Bryant Mamba DriFit','Tops & T-Shirts','Grey',63.99,201),
+('75534','Kobe Bryant 2008-2009 Classic Jersey','Tops & T-Shirts','Purple',30.00,202),
+('23456','Nike Men Basketball Short','Shorts','Black',55.00,207),
+('34566','Nike 2020 New Kobe Bryant Men Sweater','Hoodies & Pullovers','White/Purple',159.99,208),
+('85732','Nike Kobe Bryant Print Tracksuit','Pants & Tights','Grey',110.00,209),
+('14574','Nike Black Mamba Never Die','Jackets & Vests','White/Purple',120.00,210),
+('35225','Nike Black Mamba','Hoodies & Pullovers','Black',115.00,205),
+('63467','Nike Kobe 3 SL MVP','Shoes','White/Varsity Purple-Varsity Maize',90.00,206),
+('97853','Nike Kobe 2 ST USA','Shoes','Midnight Navy/White-Varsity Red',200.00,203),
+('27231','Nike Kobe 1 Protro 81 Pt Game','Shoes','White/Black-Varsity Purple',175.00,204);
 
 INSERT INTO SUPPLIER (SupplierID, SupplierName, SupplierAddress,SupplierCity,SupplierState,SupplierPostalCode,SupplierPhoneNumber,SupplierFax) VALUES
 ('1000','Selina Gomez','North 89th St','Salk Lake City','UT','36789','8299201732','7191028362'),
