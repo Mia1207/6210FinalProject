@@ -13,7 +13,9 @@ CREATE TABLE CUSTOMER(
 	CustomerState CHAR(2),
 	CustomerPostalCode VARCHAR(9),
     CustomerPhoneNumber CHAR(10),
-    CONSTRAINT CUSTOMER_PK PRIMARY KEY (CustomerID)
+    CenterID INT,
+    CONSTRAINT CUSTOMER_PK PRIMARY KEY (CustomerID),
+    CONSTRAINT Customer_FK FOREIGN KEY (CenterID) REFERENCES CUSTOMER_SERVICE(CenterID)
 );
 --新增City，State和PhoneNumber
 --新增CostomerLevel, 用于“Table-level CHECK Constraints”
@@ -40,7 +42,13 @@ CREATE TABLE EMPLOYEE(
 	EmployeePostalCode VARCHAR(9),
     EmployeePhoneNumber CHAR(10),
     EmployeeFax CHAR(10),
-    CONSTRAINT EMPLOYEE_PK PRIMARY KEY (EmployeeID)
+    CenterID INT,
+    WarehouseID INT,
+    ShopID INT,
+    CONSTRAINT EMPLOYEE_PK PRIMARY KEY (EmployeeID),
+    CONSTRAINT EMPLOYEE_FK1 FOREIGN KEY (CenterID) REFERENCES CUSTOMER_SERVICE(CenterID),
+    CONSTRAINT EMPLOYEE_FK2 FOREIGN KEY (WarehouseID) REFERENCES INTERSTATE_WAREHOUSE(WarehouseID),
+    CONSTRAINT EMPLOYEE_FK3 FOREIGN KEY (ShopID) REFERENCES POPUP_STORE(ShopID)
 );
 --新增city，state
 
@@ -66,7 +74,9 @@ CREATE TABLE POPUP_STORE(
     ShopPostalCode VARCHAR(9),
     ShopFax CHAR(10),
     ShopContact VARCHAR(100),
-    CONSTRAINT POPUP_STORE_PK PRIMARY KEY (ShopID)
+    WarehouseID INT,
+    CONSTRAINT POPUP_STORE_PK PRIMARY KEY (ShopID),
+    CONSTRAINT POPUP_STORE_FK FOREIGN KEY (WarehouseID) REFERENCES INTERSTATE_WAREHOUSE(WarehouseID)
 );
 --新增City，State,PostalCode和fax
 
@@ -84,7 +94,9 @@ CREATE TABLE PAYMENT(
     PaymentAmount DECIMAL(10,2),
     PaymentMethod VARCHAR(20) CONSTRAINT PaymentMethod_CHK CHECK (PaymentMethod IN ('Cash', 'Debit Card',
                                                                                  'Credit Card', 'Check')),
-    CONSTRAINT PAYMENT_PK PRIMARY KEY (InvoiceNumber)
+    OrderID INT,
+    CONSTRAINT PAYMENT_PK PRIMARY KEY (InvoiceNumber),
+    CONSTRAINT PAYMENT_FK FOREIGN KEY (OrderID) REFERENCES [ORDER](OrderID)
 );
 
 CREATE TABLE PRODUCT(
@@ -95,7 +107,9 @@ CREATE TABLE PRODUCT(
                                                                 'Jackets & Vests','Other')),
     ProductDescription VARCHAR(50),
     ProductStandardPrice DECIMAL(10,2),
-    CONSTRAINT PRODUCT_PK PRIMARY KEY (ProductID)
+    WareHouseID INT,
+    CONSTRAINT PRODUCT_PK PRIMARY KEY (ProductID),
+    CONSTRAINT PRODUCT_FK FOREIGN KEY (WarehouseID) REFERENCES INTERSTATE_WAREHOUSE(WarehouseID)
 );
 --新增ProductCategories，用于“Table-level CHECK Constraints”
 
